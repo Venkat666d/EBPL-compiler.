@@ -54,10 +54,9 @@ router.post('/compile', async (req, res) => {
 async function executePythonCode(pythonCode) {
   try {
     // Create a temporary Python file
-    const tempDir = path.join(__dirname, 'temp');
-    if (!fs.existsSync(tempDir)) {
-      fs.mkdirSync(tempDir, { recursive: true });
-    }
+   // Create a temporary Python file in Vercel's writable /tmp directory
+    const tempDir = path.join('/tmp'); // Use the /tmp directory
+    // No need to create it, /tmp already exists
     
     const tempFile = path.join(tempDir, `temp_${Date.now()}.py`);
     fs.writeFileSync(tempFile, pythonCode);
