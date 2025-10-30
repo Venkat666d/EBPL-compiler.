@@ -549,7 +549,7 @@ function Compiler() {
     setGeneratedCode('');
     
     try {
-      const response = await axios.post('http://localhost:5000/api/compiler/compile', {
+      const response = await axios.post('/api/compiler/compile', {
         sourceCode
       });
 
